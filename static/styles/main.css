@@ -1,14 +1,29 @@
 h1{
     color: blue;
-    background-color: rgb(217, 34, 34);
+    background: white;
   
   }
   body{
-    background-color: white;
+    background: white;
   }
   div{
-    background-color: yellow;
+    background: white;
+    display: inline-block;
+    width: 10%;
   }
-  a{
-    color: red;
+  img{
+    
+    height: 50px; 
+  }
+  nav a{
+    display: inline-block;
+    color: rgb(8, 86, 8);
+    border-radius: 5%;
+    height:22%;
+    background: aquamarine;
+    margin-left: 5%;
+  }
+  nav{
+    width: 70%;
+    display: inline-block;
   }
