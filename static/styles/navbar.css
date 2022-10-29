@@ -1,35 +1,26 @@
-h1{
-    color: blue;
-    background: white;
-
-  }
-  body{
-    background: white;
-  }
-  div{
-    background: white;
-    display: inline-block;
-    width: 10%;
-  }
-  img{
-
-    height: 50px;
-  }
+*{
+  box-sizing: border-box;
+  margin: 0
+  padding:0
+  background-color: black
+}
   #header{
+    background-color: black
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:10px;
+    padding:30px 10px;
   }
   nav a{
     display: inline-block;
-    color: rgb(8, 86, 8);
+    color: black;
     border-radius: 5%;
-    height:22%;
-    background: aquamarine;
+
+    background: white;
     margin-left: 5%;
   }
-  nav{
-    width: 69%;
+
+  .nav_links li{
     display: inline-block;
+    padding: 0px 20px
   }
