@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
 {%include 'navbar.html' %}
-
 <html>
     <head>
            
@@ -33,7 +32,10 @@
                 <div class="caption">This is the fourth page</div>
                 <img src="{%static 'slideshow_4.jpg' %}">
             </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
+        <br>
         {% block content %}
 
         {% endblock %}
