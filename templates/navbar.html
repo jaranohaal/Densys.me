@@ -3,21 +3,24 @@
 <html>
 
     <head>
-        <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles\main.css' %}"> 
+        <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles\main.css' %}">
     </head>
     <body>
-        <header id="header">
-            <div id="logo">
-                <img class="logo" src="{%static 'logo.png'%}"></img>
-            </div>    
+      <!--! <div id="logo" >
+          <img class="logo" src="{%static 'logo.png'%}"></img>
+      </div>
+    -->
+          <header id="header">
+            <img class="logo" src="{%static 'logo.png'%}"></img>
                 <nav>
-                    
-                    <a>Services</a>
-                    <a>Search should be here</a>
-                    <a>About us</a>
-                    <a>Contacts</a>
-                    <a>Appointment</a>
-                    <a>Log in</a>
+                    <ul class = "nav_links">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Search should be here</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Appointment</a></li>
+                        <li><a href="#">Log in</a></li>
+                      </ul>
                  </nav>
         </header>
     </body>

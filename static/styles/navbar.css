@@ -1,0 +1,35 @@
+h1{
+    color: blue;
+    background: white;
+
+  }
+  body{
+    background: white;
+  }
+  div{
+    background: white;
+    display: inline-block;
+    width: 10%;
+  }
+  img{
+
+    height: 50px;
+  }
+  #header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+  }
+  nav a{
+    display: inline-block;
+    color: rgb(8, 86, 8);
+    border-radius: 5%;
+    height:22%;
+    background: aquamarine;
+    margin-left: 5%;
+  }
+  nav{
+    width: 69%;
+    display: inline-block;
+  }
