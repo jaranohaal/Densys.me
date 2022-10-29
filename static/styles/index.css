@@ -1,7 +1,7 @@
 * {box-sizing:border-box}
 
 .slideshow {
-    max-width: 1200px;
+    max-width: 1000px;
     position: relative;
     margin: auto;
   }
@@ -75,7 +75,7 @@
 /* Fading animation */
 .fade {
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 0.2s;
 }
 
 @keyframes fade {
