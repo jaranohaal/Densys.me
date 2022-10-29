@@ -1,6 +1,6 @@
 * {box-sizing:border-box}
 .slideshow {
-    max-width: 1000px;
+    max-width: 1200px;
     position: relative;
     margin: auto;
   }
@@ -36,7 +36,7 @@
 }
 
 /* Caption text */
-.text {
+.caption {
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
