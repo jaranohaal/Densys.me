@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 # Create your views here.
 # This is our links?
 
@@ -11,7 +12,7 @@ def aboutus(request):
     return HttpResponse('About us')
 
 def registerPage(request):
-    form = UserCreationForm()
+    form = CreateUserForm()
 
     if request.method == 'POST':
          form = UserCreationForm(request.POST)
