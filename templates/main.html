@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{%include 'navbar.html' %}
+{%include 'left_sidebar.html'%}
+{%include 'right_sidebar.html'%}
+<html>
+    <head>
+    {% load static %}
+        <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles\index.css' %}"> 
+        <script src="{% static 'slide.js' %}"></script>   
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Densys.me</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body onload="currentSlide(1)">
+        {% block content %}
+
+        {% endblock %}
+        <div class="slideshow">
+            <div class="slides fade">
+                <div class="caption">This is the first page</div>
+                <img src="{%static 'slideshow_1.jpg' %}" style="width:100%">
+                <img src="{%static 'logo.png' %}" style="width:100%">
+            </div>
+            <div class="slides fade">
+                <div class="caption">This is the second page</div>
+                <img src="{%static 'slideshow_2.jpg' %}" style="width:100%">
+            </div>
+            <div class="slides fade">
+                <div class="caption">This is the third page</div>
+                <img src="{%static 'slideshow_3.jpg' %}" style="width:100%">
+            </div>
+            <div class="slides fade">
+                <div class="caption">This is the fourth page</div>
+                <img src="{%static 'slideshow_4.jpg' %}" style="width:100%">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>    
+        
+        
+        
+    </body>
+</html>
