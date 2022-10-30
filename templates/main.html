@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-{% load static %}
+
 {%include 'navbar.html' %}
 {%include 'left_sidebar.html'%}
 {%include 'right_sidebar.html'%}
 <html>
     <head>
-
+    {% load static %}
         <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles\index.css' %}"> 
         <script src="{% static 'slide.js' %}"></script>   
         <meta charset="utf-8">
@@ -23,6 +23,7 @@
             <div class="slides fade">
                 <div class="caption">This is the first page</div>
                 <img src="{%static 'slideshow_1.jpg' %}" style="width:100%">
+                <img src="{%static 'logo.png' %}" style="width:100%">
             </div>
             <div class="slides fade">
                 <div class="caption">This is the second page</div>
