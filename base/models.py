@@ -19,7 +19,9 @@ class Doctor(models.Model):
     SPECIALIZATIONS = (('nurse','nurse'),('doctor','doctor'))
     CATEGORIES = (('first','first'),('second','second'),('third','third'))
     DEGREE = (('MD','MD'),('PhD','PhD'),('Bachelor','Bachelor'),)
-    birth_date=models.DateField()
+
+    bir_date = models.CharField(max_length=12,null=False)
+
     id_doctor = models.UUIDField(max_length = 20,primary_key=True, default=uuid.uuid4, editable=False)
     gov_id=models.CharField(max_length=12,null=False)
     first_name=models.CharField(max_length=30,null=False)
@@ -40,7 +42,9 @@ class Patient(models.Model):
     MARITAL_STATUS=(('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed'),('Separated','Separated'))
     BLOOD_GROUP=(('O','O'),('A','A'),('B','B'),('AB','AB'))
     GENDER=(('M','M'),('W','W'),('NON_BINARY','NON_BINARY'))
-    birth_date=models.DateField()
+
+    bir_date = models.CharField(max_length=12,null=False)
+
     id_patient = models.UUIDField(max_length = 20,primary_key=True, default=uuid.uuid4, editable=False)
     gov_id=models.CharField(max_length=12,null=False)
     first_name=models.CharField(max_length=30,null=False)
