@@ -1,26 +1,15 @@
-<h3> Login </h3>
-
-<form class="login-form" method="POST">
-{% csrf_token %}
-<div class="row">
-<div class="col-lg-12">
-<div class="form-group position-relative">
-<label>Username <span class="text-danger">*</span></label>
-{{form.username}}
-</div>
-</div>
-<div class="col-lg-12">
-<div class="form-group position-relative">
-<label>Password <span class="text-danger">*</span></label>
-{{form.password}}
-</div>
-</div>
-<div class="col-lg-12 mb-0">
-<button class="btn btn-primary w-100" type="submit">Login</button>
-</div>
-
-</div>
-</form>
-{%for message in messages %}
-  <p> {{message}}</p>
-{%endfor%}
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %} 
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sign In</title>
+      <link href="{% static 'styles/login.css' %}" rel="stylesheet">
+    </head>
+    <body>
+		<h1>Sign in as</h1>
+      <button id ="patient" onclick="location.href='http://127.0.0.1:8000/loginp/'">Patient</button>
+      <button id ="doctor" onclick="location.href='http://127.0.0.1:8000/logind/'">Doctor</button>
+    </body>
+</html>
