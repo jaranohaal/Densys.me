@@ -1,3 +1,5 @@
+
+<h3> Patient Registration </h3>
 <form class="login-form" method="POST">
 {% csrf_token %}
 <div class="row">
@@ -46,6 +48,21 @@
 {% endfor %}
 {% endif %}
 </div>
+
+<div class="col-md-6">
+<div class="form-group position-relative">
+<label>Middle name <span class="text-danger">*</span></label>
+{{form.first_name}}
+</div>
+{% if form.middle_name.errors %}
+{% for error in form.middle_name.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
 <div class="col-md-6">
 <div class="form-group position-relative">
 <label>Last name <span class="text-danger">*</span></label>
@@ -75,7 +92,7 @@
 
 <div class="col-md-6">
 <div class="form-group position-relative">
-<label>Date_of_birth <span class="text-danger">*</span></label>
+<label>Date of birth <span class="text-danger">*</span></label>
 {{form.date_of_birth}}
 </div>
 {% if form.date_of_birth.errors %}
@@ -100,6 +117,63 @@
 {% endfor %}
 {% endif %}
 </div>
+
+<div class="col-md-6">
+<div class="form-group position-relative">
+<label> Blood Group <span class="text-danger">*</span></label>
+{{form.blood_group}}
+</div>
+{% if form.blood_group.errors %}
+{% for error in form.blood_group.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
+<div class="col-md-12">
+<div class="form-group position-relative">
+<label> Address <span class="text-danger">*</span></label>
+{{form.address}}
+</div>
+{% if form.address.errors %}
+{% for error in form.address.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
+<div class="col-md-6">
+<div class="form-group position-relative">
+<label>Marital status <span class="text-danger">*</span></label>
+{{form.marital_status}}
+</div>
+{% if form.marital_status.errors %}
+{% for error in form.marital_status.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
+<div class="col-md-6">
+<div class="form-group position-relative">
+<label>Registration Date <span class="text-danger">*</span></label>
+{{form.reg_date}}
+</div>
+{% if form.reg_date.errors %}
+{% for error in form.reg_date.errors %}
+<div class="alert alert-danger">
+<strong>{{ error|escape }}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</div>
+
 <div class="col-md-12">
 <div class="form-group position-relative">
 <label>Password <span class="text-danger">*</span></label>
@@ -126,21 +200,7 @@
 {% endfor %}
 {% endif %}
 </div>
- <div class="col-md-12">
-<div class="form-group">
-<div class="custom-control">
-{{form.check}}
-<label >I Accept <a href="#" class="text-primary">Terms And Condition</a></label>
-</div>
-{% if form.check.errors %}
-{% for error in form.check.errors %}
-<div class="alert alert-danger">
-<strong>{{ error|escape }}</strong>
-</div>
-{% endfor %}
-{% endif %}
-</div>
-</div>
+
 <div class="col-md-12">
 <button class="btn btn-primary w-100" type="submit" >Register</button>
 
