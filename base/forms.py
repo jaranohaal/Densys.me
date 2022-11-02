@@ -13,7 +13,7 @@ def only_int(value):
 def is_blood_group(value):
     if value != 'O' or value != 'A' or value != 'B' or value != 'AB':
         raise ValidationError('incorrect blood group')
-BLOOD_GROUPS = ['O','A','B','AB']
+BLOOD_GROUPS = [('O', 'O'),('A', 'A'),('B','B'),('AB', 'AB')]
 class RegisterPatientForm(UserCreationForm):
     email = forms.EmailField(max_length=100,required = False,help_text='Enter Email Address',widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}),)
     first_name = forms.CharField(max_length=100,required = True,help_text='Enter First Name',widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),)
