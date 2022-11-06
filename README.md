@@ -15,7 +15,7 @@ In order to login as an administrator:
 5. Login: admmin
 6. Password: adminadmin
 
-Administration has an application called 'BASE'
+Administration has an application called 'BASE' (You can use the link http://127.0.0.1:8000/admin/base/)
 1. You can use it in order to register new Patients and Doctors to the system via '+Add' button next to each object.
 2. You can view their details pressing either on 'Doctor' or 'Patient'
 3. You can change their details. 
