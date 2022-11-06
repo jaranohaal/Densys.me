@@ -12,7 +12,7 @@ In order to login as an administrator:
 2. Run terminal command: python manage.py runserver
 3. Run local server at http://127.0.0.1:8000/
 4. Go to the link http://127.0.0.1:8000/admin/
-5. Login: admmin
+5. Login: admin
 6. Password: adminadmin
 
 Administration has an application called 'BASE' (You can use the link http://127.0.0.1:8000/admin/base/)
