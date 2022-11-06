@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 import uuid
 import datetime
 from django import forms
+from django.utils.html import mark_safe
 
 #Functions
 def only_int(value):
@@ -15,9 +16,9 @@ def only_int(value):
 # Create your models here.
 
 class Doctor(models.Model):
-    DEPARTMENTS = (('medicine','medicine'),('surgery','surgery'),('gynecology','gynecology'),('obstetrics','obstetrics'),('pediatrics','pediatrics'),('radiology','radiology'),('eye','eye'),('ENT','ENT'),('dental','dental'),('orthopedics','orthopedics'),('neurology','neurology'),('cardiology','cardiology'),('psychiatry','psychiatry'),('skin','skin'))
-    SPECIALIZATIONS = (('nurse','nurse'),('doctor','doctor'))
-    CATEGORIES = (('first','first'),('second','second'),('third','third'))
+    DEPARTMENTS = (('Medicine','Medicine'),('Surgery','Surgery'),('Gynecology','Gynecology'),('Obstetrics','Obstetrics'),('Pediatrics','Pediatrics'),('Radiology','Radiology'),('Eye','Eye'),('ENT','ENT'),('Dental','Dental'),('Orthopedics','Orthopedics'),('Neurology','Neurology'),('Cardiology','Cardiology'),('Psychiatry','Psychiatry'),('Skin','Skin'))
+    SPECIALIZATIONS = (('Nurse','Nurse'),('Doctor','Doctor'))
+    CATEGORIES = (('First','First'),('Second','Second'),('Third','Third'))
     DEGREE = (('MD','MD'),('PhD','PhD'),('Bachelor','Bachelor'),)
 
     bir_date = models.CharField(max_length=12,null=False)
@@ -37,6 +38,10 @@ class Doctor(models.Model):
     schedule = models.CharField(max_length = 50,null = True)
     rating = models.CharField(max_length = 10, )
     address=models.CharField(max_length=200,null=False)
+
+    def __str__(self):
+        return self.first_name+' '+self.last_name+', IIN:'+self.gov_id+', Specialization: '+self.specialization+', Department:'+self.department
+    
 
 class Patient(models.Model):
     MARITAL_STATUS=(('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed'),('Separated','Separated'))
@@ -61,5 +66,5 @@ class Patient(models.Model):
     reg_date=models.DateTimeField(auto_now_add=True,null=False)
 
 
-   # def __str__(self):
-    #    return
+    def __str__(self):
+        return self.first_name+' '+self.middle_name+' '+self.last_name+', IIN: '+self.gov_id
