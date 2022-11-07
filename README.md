@@ -5,6 +5,7 @@ Contributors:
  * Maksat Faizuldanov
  * Daniyal Bayanov
  * Temirtas Sapargaliyev 
+ * Bekzat Aitbekov
 
 Read for Project Milestone 2:
 In order to login as an administrator:
