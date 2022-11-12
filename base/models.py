@@ -5,13 +5,6 @@ import datetime
 from django import forms
 from django.utils.html import mark_safe
 
-#Functions
-def only_int(value):
-    if value.isdigit()==False:
-        raise ValidationError('ID contains characters')
-
-#Tuples
-
 
 # Create your models here.
 
@@ -20,9 +13,7 @@ class Doctor(models.Model):
     SPECIALIZATIONS = (('Nurse','Nurse'),('Doctor','Doctor'))
     CATEGORIES = (('First','First'),('Second','Second'),('Third','Third'))
     DEGREE = (('MD','MD'),('PhD','PhD'),('Bachelor','Bachelor'),)
-
-    bir_date = models.CharField(max_length=12,null=False)
-
+    bir_date = models.DateField(auto_now=False)
     id_doctor = models.UUIDField(max_length = 20,primary_key=True, default=uuid.uuid4, editable=False)
     gov_id=models.CharField(max_length=12,null=False)
     first_name=models.CharField(max_length=30,null=False)
@@ -40,16 +31,14 @@ class Doctor(models.Model):
     address=models.CharField(max_length=200,null=False)
 
     def __str__(self):
-        return self.first_name+' '+self.last_name+', IIN:'+self.gov_id+', Specialization: '+self.specialization+', Department:'+self.department
-    
+        return self.first_name+' '+self.last_name+', IIN:'+self.gov_id+', Specialization: '+self.specialization+', Department:'+self.department+', Birth date: ' + str(self.bir_date)
+
 
 class Patient(models.Model):
     MARITAL_STATUS=(('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed'),('Separated','Separated'))
     BLOOD_GROUP=(('O','O'),('A','A'),('B','B'),('AB','AB'))
     GENDER=(('M','M'),('W','W'),('NON_BINARY','NON_BINARY'))
-
-    bir_date = models.CharField(max_length=12,null=False)
-
+    bir_date = models.DateField(auto_now=False)
     id_patient = models.UUIDField(max_length = 20,primary_key=True, default=uuid.uuid4, editable=False)
     gov_id=models.CharField(max_length=12,null=False)
     first_name=models.CharField(max_length=30,null=False)
@@ -67,4 +56,4 @@ class Patient(models.Model):
 
 
     def __str__(self):
-        return self.first_name+' '+self.middle_name+' '+self.last_name+', IIN: '+self.gov_id
+        return self.first_name+' '+self.middle_name+' '+self.last_name+', IIN: '+self.gov_id + ', Birth date: ' + str(self.bir_date)
