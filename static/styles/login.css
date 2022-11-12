@@ -66,3 +66,37 @@ button[id="doctor"]:hover {
   background-color: rgb(7, 95, 7);
   color: white;
 }
+
+#header {
+  background: rgb(255, 255, 255);
+  transition: all 0.5s;
+  z-index: 997;
+  padding: 15px 0;
+  top: 0px;
+  box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
+  opacity: 10;
+}
+
+#header.header-scrolled {
+  top: 0;
+  opacity: 10;
+  
+}
+
+#header .logo {
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: "Poppins", sans-serif;
+}
+
+#header .logo a {
+  color: rgb(5, 32, 5);
+}
+
+#header .logo img {
+  max-height: 40px;
+}
