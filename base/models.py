@@ -5,8 +5,22 @@ import datetime
 from django import forms
 from django.utils.html import mark_safe
 
-
 # Create your models here.
+class Appointment(models.Model):
+    first_name = models.CharField(max_length = 50)
+    last_name = models.CharField(max_length = 50)
+    email = models.CharField(max_length = 50)
+    phone = models.CharField(max_length = 50)
+    date = models.DateField(auto_now = False)
+    sent_date = models.DateField(auto_now_add = True, blank = True, null = True)
+    accepted = models.BooleanField(default = False)
+    accepted_date = models.DateField(auto_now_add = False, null = True)
+
+    def __str__(self):
+        return self.first_name
+
+    class Meta:
+        ordering = ["-sent_date"]
 
 class Doctor(models.Model):
     DEPARTMENTS = (('Medicine','Medicine'),('Surgery','Surgery'),('Gynecology','Gynecology'),('Obstetrics','Obstetrics'),('Pediatrics','Pediatrics'),('Radiology','Radiology'),('Eye','Eye'),('ENT','ENT'),('Dental','Dental'),('Orthopedics','Orthopedics'),('Neurology','Neurology'),('Cardiology','Cardiology'),('Psychiatry','Psychiatry'),('Skin','Skin'))

@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import RegisterPatientForm
+from django.views.generic.base import TemplateView
 from django.contrib import messages
-# Create your views here.
-# This is our links?
+from .models import Appointment
 
 def home(request):
     return render(request,'index.html')
@@ -12,25 +12,27 @@ def home(request):
 def aboutus(request):
     return HttpResponse('About us')
 
-def registerPatient(request):
-    if request.method == 'GET':
-        form = RegisterPatientForm()
-        context = {'form' : form}
-        return render(request, 'registerpatient.html', context)
-    if request.method == 'POST':
-        form = RegisterPatientForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('home_page')
-        else:
-            print('Form is not valid')
-            messages.error(request, 'Error Processing Your Request')
-            context = {'form': form}
-            return render(request, 'registerpatient.html', context)
+class appointment(TemplateView):
+    template_name = 'appointment.html'
 
-    return render(request, 'registerpatient.html', {})
+    def post(self, request):
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        phoneNum = request.POST.get('number')
+        date = request.POST.get('date')
+
+        appointment = Appointment.objects.create(
+            first_name = fname,
+            last_name = lname,
+            email = email,
+            phone = phoneNum,
+            date = date
+        )
+        appointment.save()
+
+        messages.success(request, 'appointment request sent for user ' + fname +' '+ lname)
+        return HttpResponseRedirect(request.path)
 
 def loginPage(request):
     context = {}
