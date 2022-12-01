@@ -33,30 +33,7 @@ def doctors(request):
     return JsonResponse(list(doctors.values("department_id","first_name","last_name","photo")), safe = False)
 
 
-"""
-class appointment(TemplateView):
-    template_name = 'appointment.html'
 
-    def post(self, request):
-        fname = request.POST.get('fname')
-        lname = request.POST.get('lname')
-        email = request.POST.get('email')
-        phoneNum = request.POST.get('number')
-        date = request.POST.get('date')
-        department = request.POST.get('department')
-        appointment = Appointment.objects.create(
-            first_name = fname,
-            last_name = lname,
-            email = email,
-            phone = phoneNum,
-            date = date,
-            department = department
-        )
-        appointment.save()
-
-        messages.success(request, 'appointment request sent for user ' + fname +' '+ lname)
-        return HttpResponseRedirect(request.path)
-"""
 def loginPage(request):
     context = {}
     return render(request,'login.html', context)
