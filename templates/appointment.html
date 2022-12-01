@@ -55,7 +55,8 @@
       console.log('Success:', data);
       doctor_field.innerHTML= '<option value= "" selected = ""> ------</option>'
       for (let i = 0; i< data.length; i++){
-        doctor_field.innerHTML += `<option value = "${data[i]["first_name"]} ${data[i]["last_name"]}" selected>${data[i]["first_name"]} ${data[i]["last_name"]} </option>`
+        let str = data[i]["first_name"] + " " + data[i]["last_name"];
+        doctor_field.innerHTML += `<option value = "${data[i]["id_doctor"]}" selected>${str}</option>`
       }
     })
     .catch((error) => {

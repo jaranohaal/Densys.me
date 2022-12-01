@@ -12,6 +12,9 @@ from .forms import appointmentForm
 def home(request):
     return render(request,'index.html')
 
+def success(request):
+    return render(request,'success.html')
+
 def aboutus(request):
     return HttpResponse('About us')
 
@@ -22,6 +25,7 @@ def appointment(request):
         form = appointmentForm(request.POST)
         if form.is_valid():
             form.save()
+            return HttpResponseRedirect('success/')
     return render(request, "appointment.html", {"form": form})
 
 def doctors(request):
@@ -30,7 +34,7 @@ def doctors(request):
 
     department_id = data['user_id']
     doctors = Doctor.objects.filter(department__id = department_id)
-    return JsonResponse(list(doctors.values("department_id","first_name","last_name","photo")), safe = False)
+    return JsonResponse(list(doctors.values("id_doctor","first_name","last_name")), safe = False)
 
 
 

@@ -18,8 +18,8 @@ class appointmentForm(forms.ModelForm):
         if 'department' in self.data:
             try:
                 department_id = int(self.data.get('department'))
-                self.fields['doctor'].queryset = Doctor.objects.filter(department_id=department_id).order_by('name')
+                self.fields['doctor'].queryset = Doctor.objects.filter(department_id=department_id).order_by('first_name')
             except (ValueError, TypeError):
                 pass  # invalid input from the client; ignore and fallback to empty doctor queryset
         elif self.instance.pk:
-            self.fields['doctor'].queryset = self.instance.department.doctor_set.order_by('name')
+            self.fields['doctor'].queryset = self.instance.department.doctor_set.order_by('first_name')

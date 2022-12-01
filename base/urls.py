@@ -12,5 +12,6 @@ urlpatterns=[
     path('logind/', auth_views.LoginView.as_view(template_name='logind.html'), name='logind'),
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('appointment/',views.appointment, name = "appointment"),
-    path('doctors', views.doctors, name = "doctors")
+    path('doctors', views.doctors, name = "doctors"),
+    path('appointment/success/', views.success, name = "success")
 ]
