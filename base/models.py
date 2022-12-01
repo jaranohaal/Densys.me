@@ -5,25 +5,17 @@ import datetime
 from django import forms
 from django.utils.html import mark_safe
 
+
 # Create your models here.
-class Appointment(models.Model):
-    first_name = models.CharField(max_length = 50)
-    last_name = models.CharField(max_length = 50)
-    email = models.CharField(max_length = 50)
-    phone = models.CharField(max_length = 50)
-    date = models.DateField(auto_now = False)
-    sent_date = models.DateField(auto_now_add = True, blank = True, null = True)
-    accepted = models.BooleanField(default = False)
-    accepted_date = models.DateField(auto_now_add = False, null = True)
+
+class Department(models.Model):
+    name = models.CharField(max_length = 50)
 
     def __str__(self):
-        return self.first_name
+        return self.name
 
-    class Meta:
-        ordering = ["-sent_date"]
 
 class Doctor(models.Model):
-    DEPARTMENTS = (('Medicine','Medicine'),('Surgery','Surgery'),('Gynecology','Gynecology'),('Obstetrics','Obstetrics'),('Pediatrics','Pediatrics'),('Radiology','Radiology'),('Eye','Eye'),('ENT','ENT'),('Dental','Dental'),('Orthopedics','Orthopedics'),('Neurology','Neurology'),('Cardiology','Cardiology'),('Psychiatry','Psychiatry'),('Skin','Skin'))
     SPECIALIZATIONS = (('Nurse','Nurse'),('Doctor','Doctor'))
     CATEGORIES = (('First','First'),('Second','Second'),('Third','Third'))
     DEGREE = (('MD','MD'),('PhD','PhD'),('Bachelor','Bachelor'),)
@@ -34,7 +26,7 @@ class Doctor(models.Model):
     middle_name=models.CharField(max_length=30,null=False)
     last_name=models.CharField(max_length=30,null=False)
     phone=models.CharField(max_length=11,null=False)
-    department = models.CharField(max_length = 12,null = True, choices = DEPARTMENTS)
+    department = models.ForeignKey(Department,on_delete=models.CASCADE)
     specialization = models.CharField(max_length = 12,null = True, choices = SPECIALIZATIONS)
     experience = models.CharField(max_length = 12,null = False)
     photo = models.ImageField(upload_to = "uploads/", null = False)
@@ -45,8 +37,25 @@ class Doctor(models.Model):
     address=models.CharField(max_length=200,null=False)
 
     def __str__(self):
-        return self.first_name+' '+self.last_name+', IIN:'+self.gov_id+', Specialization: '+self.specialization+', Department:'+self.department+', Birth date: ' + str(self.bir_date)
+        return self.first_name+' '+self.last_name+', IIN:'+self.gov_id+', Specialization: '+self.specialization+', Department:'+self.department.name+', Birth date: ' + str(self.bir_date)
 
+class Appointment(models.Model):
+    first_name = models.CharField(max_length = 50)
+    last_name = models.CharField(max_length = 50)
+    email = models.CharField(max_length = 50)
+    phone = models.CharField(max_length = 50)
+    date = models.DateField(auto_now = False)
+    sent_date = models.DateField(auto_now_add = True, blank = True, null = True)
+    accepted = models.BooleanField(default = False)
+    accepted_date = models.DateField(auto_now_add = False, null = True)
+    department = models.ForeignKey(Department,on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.first_name
+
+    class Meta:
+        ordering = ["-sent_date"]
 
 class Patient(models.Model):
     MARITAL_STATUS=(('Single','Single'),('Married','Married'),('Divorced','Divorced'),('Widowed','Widowed'),('Separated','Separated'))
