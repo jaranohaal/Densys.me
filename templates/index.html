@@ -31,6 +31,8 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'styles/style.css' %}" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
 
 </head>
 
@@ -43,7 +45,7 @@
 
       
       <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo me-auto"><img src="{% static 'img/logo.png'%}" alt="" class="img-fluid"></a>
+      <a href="http://127.0.0.1:8000/" class="logo me-auto"><img src="{% static 'img/logo.png'%}" alt="" class="img-fluid"></a>
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
@@ -65,6 +67,15 @@
     <div class="container">
       <h1>Welcome to </h1>
       <h1 style="color:rgb(11, 52, 11);">Densys.me</h1>
+      <div class="wrapper">
+        <div class="search-input">
+          <a href="" target="_blank" hidden></a>
+          <input type="text" placeholder="Type to search..">
+          <div class="autocom-box">
+          </div>
+          <div class="iconn"><i class="fas fa-search"></i></div>
+        </div>
+      </div>
       <a href="http://127.0.0.1:8000/login/" class="btn-get-started scrollto">Sign in</a>
     </div>
   </section><!-- End Hero -->
@@ -84,7 +95,7 @@
                 Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
               </p>
               <div class="text-center">
-                <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="#services" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -453,6 +464,165 @@
 
   <!-- Template Main JS File -->
   <script src="{% static ' js/main.js'%}"></script>
+
+  <!-- Search box -->
+  <script>
+    let suggestions = [
+      "Doctors", 
+      "Cardiology",
+      "Eye Care",
+      "Address",
+      "Neurology",
+      "Pediatrics",
+      "Hepatology",
+      "FAQ",
+      "Frequently asked questions",
+      "Sign in",
+    ];
+
+    // getting all required elements
+    const searchWrapper = document.querySelector(".search-input");
+    const inputBox = searchWrapper.querySelector("input");
+    const suggBox = searchWrapper.querySelector(".autocom-box");
+    const icon = searchWrapper.querySelector(".iconn");
+    let linkTag = searchWrapper.querySelector("a");
+    let webLink;
+
+    // if user press any key and release
+    inputBox.onkeyup = (e)=>{
+        let userData = e.target.value; //user enetered data
+        let emptyArray = [];
+        if(userData){
+            icon.onclick = ()=>{
+                webLink = `https://www.google.com/search?q=${userData}`;
+                linkTag.setAttribute("href", webLink);
+                linkTag.click();
+            }
+            emptyArray = suggestions.filter((data)=>{
+                //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+                return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+            });
+            emptyArray = emptyArray.map((data)=>{
+                // passing return data inside li tag
+                return data = `<li>${data}</li>`;
+            });
+            searchWrapper.classList.add("active"); //show autocomplete box
+            showSuggestions(emptyArray);
+            let allList = suggBox.querySelectorAll("li");
+            for (let i = 0; i < allList.length; i++) {
+                //adding onclick attribute in all li tag
+                allList[i].setAttribute("onclick", "select(this)");
+            }
+        }else{
+            searchWrapper.classList.remove("active"); //hide autocomplete box
+        }
+    }
+
+    function select(element){
+        let selectData = element.textContent;
+        inputBox.value = selectData;
+        icon.onclick = ()=>{
+            webLink = `https://www.google.com/search?q=${selectData}`;
+            linkTag.setAttribute("href", webLink);
+            linkTag.click();
+        }
+        searchWrapper.classList.remove("active");
+    }
+
+    function showSuggestions(list){
+        let listData;
+        if(!list.length){
+            userValue = inputBox.value;
+            listData = `<li>${userValue}</li>`;
+        }else{
+          listData = list.join('');
+        }
+        suggBox.innerHTML = listData;
+    }
+    
+  </script>
+
+  <style>
+    ::selection{
+      color: #fff;
+      background: #664AFF;
+    }
+
+    .wrapper{
+      max-width: 450px;
+      margin-top: 10px;
+    }
+
+    .wrapper .search-input{
+      background: #fff;
+      width: 100%;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0px 1px 5px 3px rgba(0,0,0,0.12);
+    }
+
+    .search-input input{
+      height: 55px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 0 60px 0 20px;
+      font-size: 18px;
+      box-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+    }
+
+    .search-input.active input{
+      border-radius: 5px 5px 0 0;
+    }
+
+    .search-input .autocom-box{
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .search-input.active .autocom-box{
+      padding: 10px 8px;
+      opacity: 1;
+      pointer-events: auto;
+      z-index: 100;
+    }
+
+    .autocom-box li{
+      list-style: none;
+      padding: 8px 12px;
+      display: none;
+      width: 100%;
+      cursor: default;
+      border-radius: 3px;
+      z-index: 100;
+    }
+
+    .search-input.active .autocom-box li{
+      display: block;
+      z-index: 100;
+    }
+    .autocom-box li:hover{
+      background: #efefef;
+    }
+
+    .search-input .iconn{
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 55px;
+      width: 55px;
+      text-align: center;
+      line-height: 55px;
+      font-size: 20px;
+      color: rgb(29, 146, 29);
+      cursor: pointer;
+    }
+  </style>
 
 </body>
 
