@@ -6,10 +6,49 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Sign In</title>
       <link href="{% static 'styles/login.css' %}" rel="stylesheet">
+      <link href="{% static 'styles/style.css' %}" rel="stylesheet">
+
+        <!-- Favicons -->
+      <link href="{% static 'img/favicon.png' %}" rel="icon">
+      <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+      <!-- Vendor CSS Files -->
+      <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/animate_css/animate.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+      <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
     </head>
     <body>
-		<h1>Sign in as</h1>
-      <button id ="patient" onclick="location.href='http://127.0.0.1:8000/loginp/'">Patient</button>
-      <button id ="doctor" onclick="location.href='http://127.0.0.1:8000/logind/'">Doctor</button>
+      <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+    
+          
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <a href="http://127.0.0.1:8000/" class="logo me-auto"><img src="{% static 'img/logo.png'%}" alt="" class="img-fluid"></a>
+    
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/">Home</a></li>
+              <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/#services">Services</a></li>
+              <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/#departments">Departments</a></li>
+              <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/#faq">FAQ</a></li>
+              <li><a class="nav-link scrollto" href="http://127.0.0.1:8000/#contact">Address</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+        </div>
+      </header>
+		  <h1>Sign in as</h1>
+      <button id ="patient" onclick="location.href='http://127.0.0.1:8000/loginp/'" >Patient</button>
+      <button id ="doctor" onclick="location.href='http://127.0.0.1:8000/logind/'" style="margin-left: 170px;">Doctor</button>
     </body>
 </html>
